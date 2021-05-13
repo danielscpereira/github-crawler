@@ -9,6 +9,7 @@ Api for grouping files by extension and sum of their lines
 ### Pré-requisitos
 
 Para o desenvolvimento serão necessários os seguintes software : 
+* [JDK11](https://www.oracle.com/br/java/technologies/javase-jdk11-downloads.html) - Java SE Development Kit 11.
 * [Apache Maven](https://maven.apache.org/) - Ferramenta de gerenciamento e compreensão de projetos de software.
 * [git](https://git-scm.com/downloads) - Controle de versão.
 
