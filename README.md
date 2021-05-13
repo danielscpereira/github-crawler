@@ -68,35 +68,6 @@ mvn clean package spring-boot:run
 Após a publicação da aplicação no servidor acesse : **http://localhost:8080/api-github-crawler/v1**
 
 
-## Publicação 
-
-#### Homologação 
-
-```
-mvn clean package -P hml
-```
-
-Obs: Será gerado dentro da pasta **target** o seguinte arquivo : api-cad#[versao].war . Sendo que a aplicação irá atender pelo seguinte contexto :api-cad/[versao].
-
-
-#### Produção 
-
-```
-mvn clean package -P prd 
-```
-
-Obs:Caso seja necessário alterar a versão o parametro opcional **-Dapi-version** pode ser utilizado.
-
-Ex.
-
-```
-mvn clean package -P dev -Dapi-version=v2
-```
-
-
-
-
-
 
 ## Autor
 
