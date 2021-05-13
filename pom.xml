@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.3.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>br.gov.es.sesp</groupId>
+    <artifactId>github-crawler</artifactId>
+    <version>1.0.0</version>
+    <name>github-crawler</name>
+    <description>Crawler api github</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>11</java.version>
+        <jackson-databind-version>2.9.8</jackson-databind-version>
+        <jasypt-spring-boot-version>2.0.0</jasypt-spring-boot-version>
+        <lombok-version>1.18.20</lombok-version>
+        <api-version>v1</api-version>
+        <docker.image>registry.heroku.com/github-crawler-ds/web:latest</docker.image>
+        <sonar.host.url>http://localhost:9000</sonar.host.url>        
+        <sonar.login>admin</sonar.login>        
+        <sonar.password>adminadmin</sonar.password>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-rest</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>    
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+        
+       
+       
+        
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+            <scope>compile</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+            <scope>compile</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind-version}</version>
+        </dependency>            
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot</artifactId>
+            <version>${jasypt-spring-boot-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok-version}</version>                
+        </dependency>
+        
+    </dependencies>
+    
+    <build>
+        <finalName>${project.name}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+           
+           
+            
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>2.7.0</version>                
+                <configuration>
+                    <allowInsecureRegistries>true</allowInsecureRegistries>                    
+                    <from>
+                        <image>openjdk:13-jdk-alpine3.9</image>
+                    </from>
+                    <to>
+                        <image>${docker.image}</image>
+                    </to>
+                    <container>    
+                        <mainClass>br.com.danielscpereira.crawler.SpringBootTomcatApplication</mainClass>
+                        <jvmFlags>
+                            <jvmFlag>-Dserver.port=$PORT</jvmFlag>                            
+                        </jvmFlags>
+                        <ports>
+                            <port>80</port>                            
+                        </ports>                        
+                    </container>
+                </configuration>
+            </plugin>
+            
+            
+        </plugins>
+    </build>
+    
+    
+
+</project>
