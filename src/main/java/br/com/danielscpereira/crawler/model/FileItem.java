@@ -31,6 +31,6 @@ public class FileItem {
 
     @Override
     public String toString() {
-        return "Name:" + name + "\nSize:" + fileSize + "\nlines:" + lines;
+        return "Name:" + name + "\t\t\t\tSize:" + fileSize + "\t\t\t\tlines:" + lines;
     }
 }

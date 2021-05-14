@@ -52,9 +52,7 @@ git clone https://github.com/danielscpereira/github-crawler.git
 
 Todas as configurações do projeto estão nos arquivos [application.properties](./application.properties).
 
-## Construido com 
-* [Maven](https://maven.apache.org/) - Gerenciador de Dependências 
-* [Swagger](https://swagger.io/) - Framework para documentação de Apis
+
 
 ## Testando a aplicação 
 
@@ -68,6 +66,26 @@ mvn clean package spring-boot:run
 
 Após a publicação da aplicação no servidor acesse : **http://localhost:8080/api-github-crawler/v1**
 
+
+## Conteinerização da aplicação 
+
+```
+mvn compile jib:dockerBuild
+```
+
+##### Envio da imagem para o registry
+``` 
+ docker push registry.heroku.com/github-crawler-ds/web:latest
+```
+
+##### Deploy da aplicação
+``` 
+ heroku container:release web -a github-crawler-ds
+```
+
+#### Acessando a aplicação remota 
+
+Após a publicação da aplicação no servidor acesse : **https://github-crawler-ds.herokuapp.com/api-github-crawler/v1**
 
 
 ## Autor

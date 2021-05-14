@@ -39,7 +39,6 @@ public class CrawlerController {
     //produces = {"application/json", "application/xml"})
     public List<GroupFile> getFilesGroupedByExtension(
             @ApiParam(name = "repository", value = "Github repository not including the base https://github.com", defaultValue = "", required = true, example = "danielscpereira/test") @RequestParam String repository
-            //,@ApiParam(name = "includeBranchs", value = "Including all branchs", defaultValue = "false", required = false, example = "false") @RequestParam(required = false) boolean includeBranchs
     ) {
 
         var url = GITHUB_URL + repository;
