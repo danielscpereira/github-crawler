@@ -90,5 +90,5 @@ Após a publicação da aplicação no servidor acesse : **https://github-crawle
 
 ## Autor
 
-* **Daniel Santiago do Carmo Pereira** - (http://www.linkedin.com/in/danielscpereira)
+* **Daniel Santiago do Carmo Pereira** - [linkedin](http://www.linkedin.com/in/danielscpereira)
 
